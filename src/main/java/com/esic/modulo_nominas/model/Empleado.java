@@ -1,45 +1,59 @@
 package com.esic.modulo_nominas.model;
 
+import com.esic.modulo_nominas.dto.EmpleadoDto;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "empleados")
 public class Empleado {
     @Id
-    @Column(name = "idEmpleado", nullable = false)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
+    private Integer idEmpleado;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "idHorario", nullable = false)
-    private Horario idHorario;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "idCargo", nullable = false)
-    private Cargo idCargo;
-
-    @Column(name = "nombre", nullable = false, length = 100)
+    @Column(nullable = false, length = 100)
     private String nombre;
 
-    @Column(name = "apellidos", nullable = false, length = 100)
+    @Column(nullable = false, length = 100)
     private String apellidos;
 
-    @Column(name = "direccion", nullable = false)
+    @Column(nullable = false)
     private String direccion;
 
-    @Column(name = "correo", nullable = false, length = 100)
+    @Column(nullable = false, length = 100)
     private String correo;
 
-    @Column(name = "centroTrabajo", nullable = false, length = 10)
+    @Column(nullable = false, length = 10)
     private String centroTrabajo;
 
-    @Column(name = "numSegSoc", nullable = false, length = 20)
+    @Column(nullable = false, length = 20)
     private String numSegSoc;
 
-    @Column(name = "documento", nullable = false, length = 20)
+    @Column(nullable = false, length = 20)
     private String documento;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(nullable = false)
+    private Horario horario;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(nullable = false)
+    private Cargo cargo;
+
+    public Empleado(EmpleadoDto empleadoDto) {
+        this.idEmpleado = empleadoDto.getIdEmpleado();
+        this.nombre = empleadoDto.getNombre();
+        this.apellidos = empleadoDto.getApellidos();
+        this.direccion = empleadoDto.getDireccion();
+        this.correo = empleadoDto.getCorreo();
+        this.centroTrabajo = empleadoDto.getCentroTrabajo();
+        this.numSegSoc = empleadoDto.getNumSegSoc();
+        this.documento = empleadoDto.getDocumento();
+        this.horario = new Horario(empleadoDto.getHorario());
+        this.cargo = new Cargo(empleadoDto.getCargo());
+    }
 }

@@ -1,22 +1,25 @@
 package com.esic.modulo_nominas.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
+import com.esic.modulo_nominas.dto.HorarioDto;
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "horario")
 public class Horario {
     @Id
-    @Column(name = "idHorario", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Integer id;
 
-    @Column(name = "horasMes", nullable = false)
+    @Column(nullable = false)
     private Integer horasMes;
 
+    public Horario(HorarioDto horarioDto) {
+        this.id = horarioDto.getId();
+        this.horasMes = horarioDto.getHorasMes();
+    }
 }
