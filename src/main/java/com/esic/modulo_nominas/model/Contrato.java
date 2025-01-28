@@ -17,7 +17,7 @@ public class Contrato {
     @Column(name = "idContrato", nullable = false)
     private Integer idContrato;
     @ManyToOne
-    @Column(name = "idEmpleado", nullable = false)
+    @JoinColumn(name = "idEmpleado", nullable = false)
     private Empleado idEmpleado;
     @Column(name = "salarioBruto", nullable = false)
     private double salarioBruto;
