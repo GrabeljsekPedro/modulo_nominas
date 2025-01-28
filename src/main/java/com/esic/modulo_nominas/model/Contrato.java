@@ -25,7 +25,7 @@ public class Contrato {
     private Integer nPagos;
     @Column(name = "inicioContrato", nullable = false)
     private LocalDate inicioContrato;
-    @Column(name = "dinContrato", nullable = false)
+    @Column(name = "finContrato", nullable = false)
     private LocalDate finContrato;
 
     public Contrato(ContratoDto contratoDTO) {
