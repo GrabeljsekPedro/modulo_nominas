@@ -21,17 +21,14 @@ public class Nomina {
     private Integer cantidad;
     @Column(name = "fechapago", nullable = false)
     private LocalDate fechapago;
-    @Column(name = "idContrato", nullable = false)
+    @JoinColumn(name = "idContrato", nullable = false)
     @ManyToOne
     private Contrato idContrato;
 
-   public Nomina(NominaDto nominaDTO){
-        this.idNomina = nominaDTO.getIdNomina();
-        this.cantidad = nominaDTO.getCantidad();
-        this.fechapago = nominaDTO.getFechaPago();
-        this.idContrato = new Contrato(nominaDTO.getContratoDto());
+   public Nomina(NominaDto nominaDto){
+        this.idNomina = nominaDto.getIdNomina();
+        this.cantidad = nominaDto.getCantidad();
+        this.fechapago = nominaDto.getFechaPago();
+        this.idContrato = new Contrato(nominaDto.getContratoDto());
    }
-
-//
-
 }

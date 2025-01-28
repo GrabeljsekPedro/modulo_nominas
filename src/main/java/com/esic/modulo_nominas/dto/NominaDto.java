@@ -21,6 +21,5 @@ public class NominaDto {
         this.cantidad = nomina.getCantidad();
         this.fechaPago = nomina.getFechapago();
         this.contratoDto = new ContratoDto(nomina.getIdContrato());
-
     }
 }

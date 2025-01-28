@@ -15,7 +15,7 @@ public class ContratoDto {
     private LocalDate inicioContrato;
     private LocalDate finContrato;
     private Integer idEmpleado;
-    //private EmpleadoDto empleadodto;
+    private EmpleadoDto empleadoDto;
 
     public ContratoDto(Contrato contrato){
         this.idContrato = contrato.getIdContrato();
@@ -23,6 +23,6 @@ public class ContratoDto {
         this.nPagos = contrato.getNPagos();
         this.inicioContrato = contrato.getInicioContrato();
         this.finContrato = contrato.getFinContrato();
-        //this.empleadoDto = new ContratoDto(contrato.getIdEmpleado);
+        this.empleadoDto = new EmpleadoDto(contrato.getIdEmpleado());
     }
 }
