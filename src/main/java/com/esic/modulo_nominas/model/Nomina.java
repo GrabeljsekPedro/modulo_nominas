@@ -29,7 +29,7 @@ public class Nomina {
         this.idNomina = nominaDTO.getIdNomina();
         this.cantidad = nominaDTO.getCantidad();
         this.fechapago = nominaDTO.getFechaPago();
-        this.idContrato = new Contrato(nominaDTO.getContratoDTO());
+        this.idContrato = new Contrato(nominaDTO.getContratoDto());
    }
 
 //
